@@ -20,6 +20,9 @@ use ilMail;
 use ilObjCourseReference;
 use ilObject;
 use ilObjectLP;
+use ilObjSAHSLearningModule;
+use ilObjSCORM2004LearningModule;
+use ilObjSCORMLearningModule;
 use ilObjTest;
 use ilObjUser;
 use ilStudyProgrammeTreeException;
@@ -741,6 +744,16 @@ class Schedule
                     if ($lp_obj instanceof ilTestLP) {
                         $lp_obj->setTestObject(new ilObjTest($object['ref_id']));
                     }
+                } elseif ($object['type'] === 'sahs') {
+                    if (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm") {
+                        $scorm = new ilObjSCORMLearningModule($object['ref_id']);
+                    } elseif (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm2004") {
+                        $scorm = new ilObjSCORM2004LearningModule($object['ref_id']);
+                    }
+
+                    if (isset($scorm)) {
+                        $scorm->deleteTrackingDataOfUsers($this->getAffectedUsers());
+                    }
                 }
 
                 $lp_obj->resetLPDataForCompleteObject();
@@ -760,6 +773,16 @@ class Schedule
                 if ($object['type'] === 'tst') {
                     if ($lp_obj instanceof ilTestLP) {
                         $lp_obj->setTestObject(new ilObjTest($object['ref_id']));
+                    }
+                } elseif ($object['type'] === 'sahs') {
+                    if (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm") {
+                        $scorm = new ilObjSCORMLearningModule($object['ref_id']);
+                    } elseif (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm2004") {
+                        $scorm = new ilObjSCORM2004LearningModule($object['ref_id']);
+                    }
+
+                    if (isset($scorm)) {
+                        $scorm->deleteTrackingDataOfUsers($user_ids);
                     }
                 }
 
@@ -792,6 +815,16 @@ class Schedule
                     if ($lp_obj instanceof ilTestLP) {
                         $lp_obj->setTestObject(new ilObjTest($object['ref_id']));
                     }
+                } elseif ($object['type'] === 'sahs') {
+                    if (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm") {
+                        $scorm = new ilObjSCORMLearningModule($object['ref_id']);
+                    } elseif (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm2004") {
+                        $scorm = new ilObjSCORM2004LearningModule($object['ref_id']);
+                    }
+
+                    if (isset($scorm)) {
+                        $scorm->deleteTrackingDataOfUsers($user_ids_filtered);
+                    }
                 }
 
                 $lp_obj->resetLPDataForUserIds($user_ids_filtered);
@@ -814,6 +847,16 @@ class Schedule
                 if ($object['type'] === 'tst') {
                     if ($lp_obj instanceof ilTestLP) {
                         $lp_obj->setTestObject(new ilObjTest($object['ref_id']));
+                    }
+                } elseif ($object['type'] === 'sahs') {
+                    if (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm") {
+                        $scorm = new ilObjSCORMLearningModule($object['ref_id']);
+                    } elseif (ilObjSAHSLearningModule::_lookupSubType($obj_id) == "scorm2004") {
+                        $scorm = new ilObjSCORM2004LearningModule($object['ref_id']);
+                    }
+
+                    if (isset($scorm)) {
+                        $scorm->deleteTrackingDataOfUsers($user_ids);
                     }
                 }
 
