@@ -46,7 +46,6 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
         $this->refinery = $DIC->refinery();
         $this->request = $DIC->http()->request();
 
-        $this->tpl->addCss($this->plugin->getDirectory() . '/templates/css/sur_ilias_reset_config.css');
         $this->tpl->addJavaScript($this->plugin->getDirectory() . '/templates/js/email_preview.js');
 
         $this->setTabs();
