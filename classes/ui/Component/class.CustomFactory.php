@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui\Component;
+namespace SurReset\classes\ui\Component;
 
-use SurILIASReset\classes\ui\Component\Input\Field\MultipleSelector;
-use SurILIASReset\classes\ui\Component\Input\Field\ObjectSelector;
+use SurReset\classes\ui\Component\Input\Field\MultipleSelector;
+use SurReset\classes\ui\Component\Input\Field\ObjectSelector;
 
 /**
  * Class CustomFactory

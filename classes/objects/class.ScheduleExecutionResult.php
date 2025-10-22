@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\objects;
+namespace SurReset\classes\objects;
 
 class ScheduleExecutionResult
 {

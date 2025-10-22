@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui\Component;
+namespace SurReset\classes\ui\Component;
 
 use ILIAS\Refinery\Constraint;
 use ILIAS\Data;
 use ILIAS\Refinery\Custom\Constraint as CustomConstraint;
-use ilSurILIASResetPlugin;
+use ilSurResetPlugin;
 
 class HasOneItem extends CustomConstraint implements Constraint
 {
@@ -20,7 +20,7 @@ class HasOneItem extends CustomConstraint implements Constraint
                 return is_array($value) && count($value) >= 1;
             },
             function ($txt, $value) {
-                $plugin = ilSurILIASResetPlugin::getInstance();
+                $plugin = ilSurResetPlugin::getInstance();
 
                 return $plugin->txt("has_one_item_error");
             },

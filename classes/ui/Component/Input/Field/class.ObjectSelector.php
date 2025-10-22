@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui\Component\Input\Field;
+namespace SurReset\classes\ui\Component\Input\Field;
 
 use Closure;
 use Exception;
@@ -23,7 +23,7 @@ use ilObject;
 use ilObjectFactory;
 use ilObjectNotFoundException;
 use LogicException;
-use SurILIASReset\classes\ui\Component\HasOneItem;
+use SurReset\classes\ui\Component\HasOneItem;
 
 /**
  * Class ObjectSelector

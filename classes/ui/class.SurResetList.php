@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui;
+namespace SurReset\classes\ui;
 
 use Generator;
 use ilAdvancedSelectionListGUI;
 use ILIAS\Data\Order;
 use ILIAS\Data\Range;
 use ILIAS\UI\Component\Table\RowFactory;
-use ilSurILIASResetPlugin;
+use ilSurResetPlugin;
 use ilTable2GUI;
-use SurILIASReset\classes\objects\Schedule;
+use SurReset\classes\objects\Schedule;
 
-class SurILIASResetList extends ilTable2GUI
+class SurResetList extends ilTable2GUI
 {
     private array $records = [];
-    private ilSurILIASResetPlugin $plugin;
+    private ilSurResetPlugin $plugin;
 
     public function __construct($a_parent_obj, $a_parent_cmd)
     {
@@ -28,7 +28,7 @@ class SurILIASResetList extends ilTable2GUI
             $this->records[] = $record;
         }
 
-        $this->plugin = ilSurILIASResetPlugin::getInstance();
+        $this->plugin = ilSurResetPlugin::getInstance();
 
         parent::__construct($a_parent_obj, $a_parent_cmd);
 

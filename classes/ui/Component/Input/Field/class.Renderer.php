@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui\Component\Input\Field;
+namespace SurReset\classes\ui\Component\Input\Field;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Component\Input\Field\FormInput;
@@ -11,7 +11,7 @@ use ILIAS\UI\Component\Tree\Node\Node;
 use ILIAS\UI\Component\Tree\TreeRecursion;
 use ILIAS\UI\Implementation\Component\Input\Field\Renderer as RendererILIAS;
 use ILIAS\UI\Implementation\Render\Template;
-use ilSurILIASResetPlugin;
+use ilSurResetPlugin;
 use ilTemplate;
 use ilTemplateException;
 
@@ -31,8 +31,8 @@ class Renderer extends RendererILIAS
     {
         global $DIC;
 
-        $DIC->ui()->mainTemplate()->addJavaScript('Customizing/global/plugins/Services/Cron/CronHook/SurILIASReset/templates/Component/Input/Field/customField.js');
-        $DIC->ui()->mainTemplate()->addCss('Customizing/global/plugins/Services/Cron/CronHook/SurILIASReset/templates/Component/Input/Field/customField.css');
+        $DIC->ui()->mainTemplate()->addJavaScript('Customizing/global/plugins/Services/Cron/CronHook/SurReset/templates/Component/Input/Field/customField.js');
+        $DIC->ui()->mainTemplate()->addCss('Customizing/global/plugins/Services/Cron/CronHook/SurReset/templates/Component/Input/Field/customField.css');
 
         if (isset($default_renderer)) {
             $this->default_renderer = $default_renderer;
@@ -127,7 +127,7 @@ class Renderer extends RendererILIAS
 
     private function getTemplateCustom(string $name): ilTemplate
     {
-        return new ilTemplate("Customizing/global/plugins/Services/Cron/CronHook/SurILIASReset/templates/Component/Input/Field/$name", true, true);
+        return new ilTemplate("Customizing/global/plugins/Services/Cron/CronHook/SurReset/templates/Component/Input/Field/$name", true, true);
     }
 
     /**
@@ -148,7 +148,7 @@ class Renderer extends RendererILIAS
         $obj_sel_tpl->setVariable("VALUE", json_encode($component->getValue() ?? []));
         $this->maybeDisable($component, $obj_sel_tpl);
 
-        $plugin = ilSurILIASResetPlugin::getInstance();
+        $plugin = ilSurResetPlugin::getInstance();
 
         $modal = $this->getUIFactory()->modal()->lightbox($this->getUIFactory()->modal()->lightboxTextPage($this->buildObjects($component->getTree()), $plugin->txt("select_objects")));
         $modal_rendered = $this->render($modal);
@@ -178,7 +178,7 @@ class Renderer extends RendererILIAS
                     $modify = "$('#$id').attr('data-id', '" . $record["ref_id"] . "')";
 
                     if ($record["selectable"]) {
-                        $modify .= ".addClass('ilSurILIASResetTreeNode')";
+                        $modify .= ".addClass('ilSurResetTreeNode')";
                     }
 
                     return $modify . ";";
@@ -207,7 +207,7 @@ class Renderer extends RendererILIAS
         $multiple_sel_tpl->setVariable("VALUE", json_encode($component->getValue() ?? []));
         $this->maybeDisable($component, $multiple_sel_tpl);
 
-        $plugin = ilSurILIASResetPlugin::getInstance();
+        $plugin = ilSurResetPlugin::getInstance();
 
         $modal = $this->getUIFactory()->modal()->lightbox($this->getUIFactory()->modal()->lightboxTextPage($this->buildMultipleCheckbox($id_multiple_selector, $component->getOption()), $plugin->txt("select")));
         $modal_rendered = $this->render($modal);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\objects;
+namespace SurReset\classes\objects;
 
 use DateInterval;
 use DateTime;
@@ -23,7 +23,7 @@ use ilObjSCORMLearningModule;
 use ilObjTest;
 use ilObjUser;
 use ilStudyProgrammeTreeException;
-use ilSurILIASResetPlugin;
+use ilSurResetPlugin;
 use ilTestLP;
 
 class Schedule
@@ -476,7 +476,7 @@ class Schedule
 
     public function getUsersDataToDisplay(): array
     {
-        $plugin = ilSurILIASResetPlugin::getInstance();
+        $plugin = ilSurResetPlugin::getInstance();
         $users = $this->getUsersData();
 
         $data = [];

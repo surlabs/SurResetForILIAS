@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-use SurILIASReset\classes\objects\Schedule;
+use SurReset\classes\objects\Schedule;
 
-class ilSurILIASResetCron extends ilCronJob
+class ilSurResetCron extends ilCronJob
 {
-    public const ID = 'sur_ilias_reset';
+    public const ID = 'sur_reset';
     private $plugin;
 
     public function __construct()
     {
-        $this->plugin = ilSurILIASResetPlugin::getInstance();
+        $this->plugin = ilSurResetPlugin::getInstance();
     }
 
     public function getId(): string

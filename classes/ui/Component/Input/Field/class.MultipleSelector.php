@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SurILIASReset\classes\ui\Component\Input\Field;
+namespace SurReset\classes\ui\Component\Input\Field;
 
 use Closure;
 use Exception;
@@ -19,7 +19,7 @@ use ILIAS\UI\Implementation\Component\Input\NameSource;
 use ILIAS\UI\Implementation\Component\JavaScriptBindable;
 use ILIAS\UI\Implementation\Component\Triggerer;
 use LogicException;
-use SurILIASReset\classes\ui\Component\HasOneItem;
+use SurReset\classes\ui\Component\HasOneItem;
 
 /**
  * Class MultipleSelector
