@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-class ilSurILIASResetPlugin extends ilUserInterfaceHookPlugin implements ilCronJobProvider
+class ilSurResetPlugin extends ilUserInterfaceHookPlugin implements ilCronJobProvider
 {
-    public const PLUGIN_NAME = "SurILIASReset";
-    private static ilSurILIASResetPlugin $instance;
+    public const PLUGIN_NAME = "SurReset";
+    private static ilSurResetPlugin $instance;
 
     public static function getInstance()
     {
@@ -28,8 +28,8 @@ class ilSurILIASResetPlugin extends ilUserInterfaceHookPlugin implements ilCronJ
 
     public function getCronJobInstance($jobId): ilCronJob
     {
-        if ($jobId === ilSurILIASResetCron::ID) {
-            return new ilSurILIASResetCron();
+        if ($jobId === ilSurResetCron::ID) {
+            return new ilSurResetCron();
         }
 
         throw new OutOfBoundsException("No cron job found with ID: " . $jobId);
@@ -37,6 +37,6 @@ class ilSurILIASResetPlugin extends ilUserInterfaceHookPlugin implements ilCronJ
 
     public function getCronJobInstances(): array
     {
-        return [new ilSurILIASResetCron()];
+        return [new ilSurResetCron()];
     }
 }

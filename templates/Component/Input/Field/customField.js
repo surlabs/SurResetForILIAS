@@ -73,7 +73,7 @@ $(document).ready(function() {
     });
 
     new MutationObserver((mutations, obs) => {
-        $(".ilSurILIASResetTreeNode").each(function() {
+        $(".ilSurResetTreeNode").each(function() {
             const objectSelector = $(".objectSelectorResult").parent().attr("objectSelector");
             const nodeId = $(this).attr("data-id");
             const nodeTitle = $(this).find(".c-tree__node__label").text().trim();

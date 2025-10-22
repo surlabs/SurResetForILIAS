@@ -3,11 +3,11 @@
 2. In /Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
 3. Then, execute:
 ```bash
-git clone https://github.com/surlabs/SurILIASReset.git ./SurILIASReset
-cd SurILIASReset
-git checkout main
+git clone https://github.com/surlabs/SurResetForILIAS.git ./SurReset
+cd SurReset
+git checkout ilias9
 ```
-4. SurILIASReset uses the ILIAS composer autoloader functionality so, after installing or update the plugin, ensure you run on the ILIAS root folder
+4. SurReset uses the ILIAS composer autoloader functionality so, after installing or update the plugin, ensure you run on the ILIAS root folder
 ```bash
 composer du
 npm install

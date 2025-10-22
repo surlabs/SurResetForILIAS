@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component;
+namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component;
 
-use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component\Input\Field\ObjectSelector;
-use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component\Input\Field\MultipleSelector;
+use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component\Input\Field\ObjectSelector;
+use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component\Input\Field\MultipleSelector;
 
 /**
  * Class CustomFactory

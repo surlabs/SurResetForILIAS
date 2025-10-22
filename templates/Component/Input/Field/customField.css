@@ -1,12 +1,12 @@
-.ilSurILIASResetTreeNode {
+.ilSurResetTreeNode {
     display: flex;
 }
 
-.ilSurILIASResetTreeNode .c-tree__node__line {
+.ilSurResetTreeNode .c-tree__node__line {
     padding-left: 0 !important;
 }
 
-.ilSurILIASResetTreeNode input[type="checkbox"] {
+.ilSurResetTreeNode input[type="checkbox"] {
     margin: 0 !important;
 }
 

@@ -4,14 +4,14 @@ declare(strict_types=1);
 use classes\objects\Schedule;
 use ILIAS\Cron\Schedule\CronJobScheduleType;
 
-class ilSurILIASResetCron extends ilCronJob
+class ilSurResetCron extends ilCronJob
 {
-    public const ID = 'sur_ilias_reset';
-    private ilSurILIASResetPlugin $plugin;
+    public const ID = 'sur_reset';
+    private ilSurResetPlugin $plugin;
 
     public function __construct()
     {
-        $this->plugin = ilSurILIASResetPlugin::getInstance();
+        $this->plugin = ilSurResetPlugin::getInstance();
     }
 
     public function getId(): string

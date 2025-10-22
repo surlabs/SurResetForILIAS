@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component\Input\Field;
+namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component\Input\Field;
 
 use Closure;
 use Generator;
@@ -13,7 +13,7 @@ use ILIAS\UI\Component\Signal;
 use ILIAS\UI\Implementation\Component\Input\Input;
 use ILIAS\UI\Implementation\Component\JavaScriptBindable;
 use ILIAS\UI\Implementation\Component\Triggerer;
-use SurILIASReset\classes\ui\Component\HasOneItem;
+use SurReset\classes\ui\Component\HasOneItem;
 
 /**
  * Class MultipleSelector

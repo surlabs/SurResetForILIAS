@@ -10,12 +10,12 @@ use ILIAS\Data\Order;
 use ILIAS\Data\Range;
 use ILIAS\UI\Component\Table\DataRetrieval;
 use ILIAS\UI\Component\Table\DataRowBuilder;
-use ilSurILIASResetPlugin;
+use ilSurResetPlugin;
 
-class SurILIASResetHistory implements DataRetrieval
+class SurResetHistory implements DataRetrieval
 {
     private array $records = [];
-    private ilSurILIASResetPlugin $plugin;
+    private ilSurResetPlugin $plugin;
 
     public function __construct()
     {
@@ -27,7 +27,7 @@ class SurILIASResetHistory implements DataRetrieval
             $this->records[] = $record;
         }
 
-        $this->plugin = ilSurILIASResetPlugin::getInstance();
+        $this->plugin = ilSurResetPlugin::getInstance();
     }
 
     public function getRows(

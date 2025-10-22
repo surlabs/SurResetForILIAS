@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use classes\objects\Schedule;
 use classes\objects\ScheduleExecutionResult;
-use classes\ui\SurILIASResetHistory;
-use classes\ui\SurILIASResetList;
-use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component\CustomFactory;
+use classes\ui\SurResetHistory;
+use classes\ui\SurResetList;
+use Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component\CustomFactory;
 use ILIAS\HTTP\Wrapper\WrapperFactory;
 use ILIAS\UI\Component\Input\Field\Group;
 use ILIAS\UI\Factory;
@@ -15,15 +15,15 @@ use ILIAS\UI\URLBuilder;
 use JetBrains\PhpStorm\NoReturn;
 
 /**
- * Class ilSurILIASResetConfigGUI
- * @ilCtrl_IsCalledBy  ilSurILIASResetConfigGUI: ilObjComponentSettingsGUI
+ * Class ilSurResetConfigGUI
+ * @ilCtrl_IsCalledBy  ilSurResetConfigGUI: ilObjComponentSettingsGUI
  */
-class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
+class ilSurResetConfigGUI extends ilPluginConfigGUI
 {
     protected ilTabsGUI $tabs;
     protected ilGlobalTemplateInterface $tpl;
     protected ilCtrl $ctrl;
-    protected ilSurILIASResetPlugin $plugin;
+    protected ilSurResetPlugin $plugin;
     protected CustomFactory $customFactory;
     protected Factory $factory;
     protected Renderer $renderer;
@@ -42,7 +42,7 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
         $this->tpl = $DIC->ui()->mainTemplate();
         $this->tabs = $DIC->tabs();
         $this->ctrl = $DIC->ctrl();
-        $this->plugin = ilSurILIASResetPlugin::getInstance();
+        $this->plugin = ilSurResetPlugin::getInstance();
         $this->factory = $DIC->ui()->factory();
         $this->customFactory = new CustomFactory();
         $this->renderer = $DIC->ui()->renderer();
@@ -76,7 +76,7 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
     {
         $this->tabs->clearSubTabs();
 
-        $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $this->wrapper->query()->retrieve('schedule_id', $this->refinery->to()->string()));
+        $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $this->wrapper->query()->retrieve('schedule_id', $this->refinery->to()->string()));
 
         $this->tabs->addSubTab('edit', $this->language->txt('edit'), $this->ctrl->getLinkTarget($this, 'editSchedule'));
         $this->tabs->addSubTab('delete', $this->language->txt('delete'), $this->ctrl->getLinkTarget($this, 'deleteSchedule'));
@@ -121,21 +121,21 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
 
             switch ($action) {
                 case "edit":
-                    $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $id);
-                    $this->ctrl->redirectByClass('ilSurILIASResetConfigGUI', 'editSchedule');
+                    $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $id);
+                    $this->ctrl->redirectByClass('ilSurResetConfigGUI', 'editSchedule');
                     break;
                 case "delete":
-                    $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $id);
-                    $this->ctrl->redirectByClass('ilSurILIASResetConfigGUI', 'deleteSchedule');
+                    $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $id);
+                    $this->ctrl->redirectByClass('ilSurResetConfigGUI', 'deleteSchedule');
                     break;
                 case "run":
-                    $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $id);
-                    $this->ctrl->redirectByClass('ilSurILIASResetConfigGUI', 'runSchedule');
+                    $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $id);
+                    $this->ctrl->redirectByClass('ilSurResetConfigGUI', 'runSchedule');
                     break;
             }
         }
 
-        $data_provider = new SurILIASResetList();
+        $data_provider = new SurResetList();
 
         $actions = [
             $this->factory->table()->action()->single(
@@ -211,7 +211,7 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
      */
     private function buildDeleteConfirmation(Schedule $schedule): string
     {
-        $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $schedule->getId());
+        $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $schedule->getId());
         $button = $this->factory->button()->standard(
             $this->language->txt("confirm"),
             $this->ctrl->getLinkTarget($this, 'confirmDeleteSchedule')
@@ -269,7 +269,7 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
      */
     private function buildRunConfirmation(Schedule $schedule): string
     {
-        $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'schedule_id', $schedule->getId());
+        $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'schedule_id', $schedule->getId());
         $button = $this->factory->button()->standard(
             $this->language->txt("confirm"),
             "#"
@@ -644,13 +644,13 @@ class ilSurILIASResetConfigGUI extends ilPluginConfigGUI
 
             switch ($action) {
                 case "view":
-                    $this->ctrl->setParameterByClass('ilSurILIASResetConfigGUI', 'execution_id', $id);
-                    $this->ctrl->redirectByClass('ilSurILIASResetConfigGUI', 'viewExecution');
+                    $this->ctrl->setParameterByClass('ilSurResetConfigGUI', 'execution_id', $id);
+                    $this->ctrl->redirectByClass('ilSurResetConfigGUI', 'viewExecution');
                     break;
             }
         }
 
-        $data_provider = new SurILIASResetHistory();
+        $data_provider = new SurResetHistory();
 
         $actions = [
             $this->factory->table()->action()->single(

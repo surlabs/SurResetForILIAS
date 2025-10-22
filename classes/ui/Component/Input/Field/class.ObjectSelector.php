@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurILIASReset\classes\ui\Component\Input\Field;
+namespace Customizing\global\plugins\Services\UIComponent\UserInterfaceHook\SurReset\classes\ui\Component\Input\Field;
 
 use Closure;
 use Generator;
@@ -17,7 +17,7 @@ use ILIAS\UI\Implementation\Component\Triggerer;
 use ilObject;
 use ilObjectFactory;
 use ilObjectNotFoundException;
-use SurILIASReset\classes\ui\Component\HasOneItem;
+use SurReset\classes\ui\Component\HasOneItem;
 
 /**
  * Class ObjectSelector
