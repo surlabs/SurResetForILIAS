@@ -1,5 +1,5 @@
 function initEmailPreview(id) {
-    $textarea = $("#" + id);
+    let $textarea = $("#" + id);
 
     // Crear el contenedor de preview si no existe
     if ($("#email-preview-" + id).length === 0) {
