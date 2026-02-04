@@ -755,6 +755,8 @@ class Schedule
         $this->logger->log("Getting objects to reset for schedule with ID $this->id", ilLogLevel::DEBUG);
         $objects = $this->getObjectsToReset();
 
+        $users = $this->getAffectedUsers();
+
         if ($this->users === self::USERS_ALL) {
             $this->logger->log("Resetting LP data for all users in schedule with ID $this->id", ilLogLevel::DEBUG);
 
@@ -776,7 +778,7 @@ class Schedule
                     }
 
                     if (isset($scorm)) {
-                        $scorm->deleteTrackingDataOfUsers($this->getAffectedUsers());
+                        $scorm->deleteTrackingDataOfUsers($users);
                     }
                 }
 
@@ -899,7 +901,7 @@ class Schedule
         $this->setLastRun(date('Y-m-d H:i:s'));
         $this->save();
 
-        $result->save($this->getAffectedUsers(), $this->getObjectsData());
+        $result->save($users, $this->getObjectsData());
 
         return $result;
     }
