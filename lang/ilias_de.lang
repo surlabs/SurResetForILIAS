@@ -116,7 +116,7 @@ notification_subject_manual#:#Benachrichtigungsbetreff (optional)
 date#:#Datum
 has_one_item_error#:#Es ist notwendig, mindestens ein Element auszuwählen
 schedule_deleted#:#Zeitplan erfolgreich gelöscht
-after_restart_subject#: Betreff nach dem Zurücksetzen
-after_restart_subject_info#: Geben Sie einen Betreff für die E-Mail-Benachrichtigung ein, die nach dem Zurücksetzen gesendet wird.
-after_restart_template#: Vorlage nach dem Zurücksetzen
-after_restart_template_info#: Schreiben Sie eine E-Mail-Nachricht, die nach dem Zurücksetzen an die Benutzer gesendet wird. Sie können die folgenden Platzhalter verwenden: [login] für den Benutzernamen, [name] für den vollständigen Namen des Benutzers, [firstname] für den Vornamen, [lastname] für den Nachnamen, [date] für das Datum des Zurücksetzens und [time] für die Uhrzeit des Zurücksetzens.
+after_restart_subject#:#Betreff nach dem Zurücksetzen
+after_restart_subject_info#:#Geben Sie einen Betreff für die E-Mail-Benachrichtigung ein, die nach dem Zurücksetzen gesendet wird.
+after_restart_template#:#Vorlage nach dem Zurücksetzen
+after_restart_template_info#:#Schreiben Sie eine E-Mail-Nachricht, die nach dem Zurücksetzen an die Benutzer gesendet wird. Sie können die folgenden Platzhalter verwenden: [login] für den Benutzernamen, [name] für den vollständigen Namen des Benutzers, [firstname] für den Vornamen, [lastname] für den Nachnamen, [date] für das Datum des Zurücksetzens und [time] für die Uhrzeit des Zurücksetzens.
