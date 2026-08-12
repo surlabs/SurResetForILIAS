@@ -632,7 +632,8 @@ class Schedule
                 }
 
                 $today = (int) $today->format('N');
-                $day_of_week = (int) $frequency_data['day'];
+                // The form stores Sunday as 0, while DateTime::format('N') uses 7.
+                $day_of_week = (int) $frequency_data['day'] ?: 7;
 
                 if ($today === $day_of_week) {
                     return true;
@@ -669,6 +670,11 @@ class Schedule
         $last_run = new DateTime($this->last_run ?? $this->created_at);
         $last_notification = new DateTime($this->last_notification ?? '1970-01-01 00:00:00');
         $today = new DateTime();
+
+        // A schedule has at most one advance notification between two resets.
+        if ($last_notification >= $last_run) {
+            return false;
+        }
 
         if ($today->format('Y-m-d') === $last_notification->format('Y-m-d')) {
             return false;
@@ -710,7 +716,8 @@ class Schedule
                 $next_run = $last_run->add(new DateInterval('P' . $interval . 'Y'));
                 break;
             case 'day_of_week':
-                $day_of_week = (int) $frequency_data['day'];
+                // The form stores Sunday as 0, while DateTime::format('N') uses 7.
+                $day_of_week = (int) $frequency_data['day'] ?: 7;
                 $next_run = clone $last_run;
 
                 $days_to_add = ($day_of_week - (int) $last_run->format('N') + 7) % 7;
@@ -724,7 +731,7 @@ class Schedule
                 $day = (int) $frequency_data['day'];
 
                 $next_run = new DateTime("{$last_run->format('Y')}-$month-$day");
-                if ($next_run < $last_run) {
+                if ($next_run <= $last_run) {
                     $next_run->modify('+1 year');
                 }
                 break;
@@ -1058,7 +1065,8 @@ private function calculateDateAndTime(): array
                 $time = $today->add(new DateInterval('P' . (int) $this->getFrequencyData()['interval'] . 'Y'))->format('H:i:s');
                 break;
             case 'day_of_week':
-                $day_of_week = (int) $this->getFrequencyData()['day'];
+                // The form stores Sunday as 0, while DateTime::format('N') uses 7.
+                $day_of_week = (int) $this->getFrequencyData()['day'] ?: 7;
                 $last_run_day = (int) $last_run->format('N');
 
                 $days_to_add = ($day_of_week - $last_run_day + 7) % 7;

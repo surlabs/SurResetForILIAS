@@ -264,6 +264,15 @@ class ilSurResetConfigGUI extends ilPluginConfigGUI
      */
     public function sendNotification(): void
     {
+        global $DIC;
+
+        if (!$DIC->rbac()->review()->isAssigned($DIC->user()->getId(), SYSTEM_ROLE_ID)) {
+            http_response_code(403);
+            header('Content-type: application/json');
+            echo json_encode(["ok" => false]);
+            exit();
+        }
+
         $schedule = new Schedule((int)$_GET["schedule_id"] ?? 0);
 
         $schedule->sendNotification(
