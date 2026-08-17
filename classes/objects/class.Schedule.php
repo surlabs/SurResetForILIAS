@@ -1006,6 +1006,8 @@ class Schedule
                 $template_for_user,
                 []
             );
+
+            sleep(10);
         }
     }
 
