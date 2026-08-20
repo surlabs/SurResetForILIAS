@@ -888,11 +888,27 @@ class Schedule
      */
     public function notify(): void
     {
+        global $DIC;
+
+        $notification_time = date('Y-m-d H:i:s');
+        // Claim this reset cycle before sending so concurrent cron processes cannot enqueue duplicates.
+        $query = /** @lang text */ "UPDATE silr_schedules
+            SET last_notification = %s
+            WHERE id = %s
+              AND (last_notification IS NULL OR last_notification < last_run)";
+        $DIC->database()->manipulateF(
+            $query,
+            ['timestamp', 'integer'],
+            [$notification_time, $this->id]
+        );
+
+        if ($DIC->database()->affectedRows() !== 1) {
+            $this->logger->log("Notification for schedule with ID $this->id was already claimed", ilLogLevel::DEBUG);
+            return;
+        }
+
+        $this->setLastNotification($notification_time);
         $this->sendNotification();
-
-        $this->setLastNotification(date('Y-m-d H:i:s'));
-
-        $this->save();
     }
 
     public function getObjectsToReset(): array
