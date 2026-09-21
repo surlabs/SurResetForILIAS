@@ -23,7 +23,7 @@ It allows administrators to reset learning progress for selected repository obje
 
 ```bash
 # Go to the ILIAS UIHook plugin directory
-cd /path/to/ilias/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
+cd /path/to/ilias/Customizing/global/plugins/Services/Cron/CronHook/
 
 # Clone plugin repository
 git clone https://github.com/surlabs/SurResetForILIAS.git SurReset
